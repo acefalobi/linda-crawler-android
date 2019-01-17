@@ -1,3 +1,10 @@
+# IDEs
+.project
+.idea
+.vscode
+.settings
+.DS_Store
+
 *.iml
 .gradle
 /local.properties
