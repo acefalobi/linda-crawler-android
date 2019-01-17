@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View.OnClickListener" />
+        <import type="android.view.View"/>
+
+        <variable
+                name="article"
+                type="com.aceinteract.android.lindacrawler.data.model.Article" />
+
+        <variable
+                name="listener"
+                type="com.aceinteract.android.lindacrawler.ui.main.ArticleItemActionListener" />
+    </data>
+
+    <android.support.v7.widget.CardView
+            android:onClick="@{() -> listener.onArticleClicked(article)}"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/iv_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:imageUrl="@{article.image_url}"
+                    android:scaleType="centerCrop"
+                    tools:src="@color/colorAccent"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:contentDescription="@{article.title}"/>
+
+            <TextView
+                    android:id="@+id/tv_title"
+                    app:layout_constraintTop_toBottomOf="@id/iv_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textAppearance="@android:style/TextAppearance.Medium"
+                    tools:text="FG orders freezing of CJN Walter Onnoghen’s accounts"
+                    android:text="@{article.title}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="6dp"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    tools:text="Justin Bieber and Hailey Baldwin will be having another wedding and this one will be lavish, unlike the first which was very private.\nThe couple plan to have their second wedding during the..."
+                    android:text="@{article.snippet}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>
